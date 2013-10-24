@@ -13,10 +13,12 @@
 #define ERR_SYSTEM_CANCELED @"com.facebook.sdk:SystemLoginCancelled"
 #define ERR_DISALLOWED @"com.facebook.sdk:SystemLoginDisallowedWithoutError"
 
-
+//@"1530578120?fields=id,name,devices,relationship_status,gender,birthday,email,activities,picture.height(150)"
 
 
 @implementation DCFbKit
+@synthesize listFriends;
+
 
 + (DCFbKit*) sharedKit{
     static DCFbKit * staticInstance = nil;
@@ -36,7 +38,11 @@
 
 - (void) postText:(NSString*)text callback:(void(^)(BOOL status,NSObject *response))handler
 {
-    BOOL presented = [FBDialogs presentOSIntegratedShareDialogModallyFrom:[AppDelegate topMostController] initialText:@"InitialText" image:nil url:nil handler:^(FBOSIntegratedShareDialogResult result, NSError *error) {
+    BOOL presented = [FBDialogs presentOSIntegratedShareDialogModallyFrom:[AppDelegate topMostController]
+                                                              initialText:@"InitialText"
+                                                                    image:nil
+                                                                      url:nil
+                                                                  handler:^(FBOSIntegratedShareDialogResult result, NSError *error) {
         if(error) {
             DLog(@"Error: %@", error.description);
             if(handler)
@@ -87,9 +93,32 @@
         }
     }
 }
+
+- (void) getFriendsListWithHandler:(void(^)(BOOL status,NSObject *response))handler
+{
+    if(listFriends ==nil){
+        FBRequest *request=[[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:@"me/friends"];
+        [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if([result isKindOfClass:[FBGraphObject class]]){
+                FBGraphObject *graphObject = (FBGraphObject*)result;
+                NSMutableArray *arrData = [graphObject objectForKey:@"data"];
+                listFriends = [[NSMutableArray alloc] initWithArray:arrData];
+            }
+            if(handler)
+                handler(YES, nil);
+        }];
+    }else{
+        if(handler)
+            handler(YES, nil);
+    }
+}
+
+
 -(void)handleFacebookPublishError:(NSError*)er{
     
 }
+
+
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI handler:(void (^)(BOOL , NSObject *))handler{
     BOOL userHaveIntegrataedFacebookAccountSetup =  NO;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
@@ -131,11 +160,13 @@
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
                     handler:(void (^)(BOOL, NSObject *))handler
 {
-    DLog(@"Session changed with error %@", [error localizedDescription]?[error localizedDescription]:@"N/A");
+    DLog(@"Session changed with \nerror %@\nsession: %@", [error localizedDescription]?[error localizedDescription]:@"N/A", session);
     switch (state) {
         case FBSessionStateOpen:
             if (!error) {
-                if(session){}else{}
+                if(session){
+                }else{
+                }
             }
             break;
         case FBSessionStateClosed:
