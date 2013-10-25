@@ -9,11 +9,11 @@
 #import "FriendsViewController.h"
 #import "DCFbKit.h"
 @interface FriendsViewController ()
-
+@property (strong, nonatomic) NSMutableArray* filteredTableData;
 @end
 
 @implementation FriendsViewController
-@synthesize tbFriends;
+@synthesize tbFriends, filteredTableData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +38,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark tableview datasource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -51,9 +52,9 @@
     UITableViewCell* cell =  [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
     if(!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndentifier];
+        [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     }
     NSDictionary* objectIndex = [[[DCFbKit sharedKit] listFriends] objectAtIndex:indexPath.row];
-    DLog(@"%@", objectIndex);
     [cell.textLabel setText:strF(@"%@",[objectIndex objectForKey:@"name"])];
     [cell.detailTextLabel setText:strF(@"ID: %@",[objectIndex objectForKey:@"id"])];
     return  cell;

@@ -8,6 +8,8 @@
 
 #import "DCFbKit.h"
 #import "AppDelegate.h"
+#import "AppStatus.h"
+#import "MBProgressHUD.h"
 
 #define ERR_USER_CANCELED @"com.facebook.sdk:UserLoginCancelled"
 #define ERR_SYSTEM_CANCELED @"com.facebook.sdk:SystemLoginCancelled"
@@ -30,6 +32,13 @@
 }
 
 - (void) login:(void(^)(BOOL, NSObject*))handler{
+    if(![AppStatus hasConnectivity])
+    {
+        DLog(@"Lost network connection");
+        if(handler)
+            handler(NO,nil);
+        return;
+    }
     if (FBSession.activeSession.isOpen)
         handler(YES,FBSession.activeSession);
     else
@@ -38,6 +47,13 @@
 
 - (void) postText:(NSString*)text callback:(void(^)(BOOL status,NSObject *response))handler
 {
+    if(![AppStatus hasConnectivity])
+    {
+        DLog(@"Lost network connection");
+        if(handler)
+            handler(NO,nil);
+        return;
+    }
     BOOL presented = [FBDialogs presentOSIntegratedShareDialogModallyFrom:[AppDelegate topMostController]
                                                               initialText:@"InitialText"
                                                                     image:nil
@@ -96,6 +112,13 @@
 
 - (void) getFriendsListWithHandler:(void(^)(BOOL status,NSObject *response))handler
 {
+    if(![AppStatus hasConnectivity])
+    {
+        DLog(@"Lost network connection");
+        if(handler)
+            handler(NO,nil);
+        return;
+    }
     if(listFriends ==nil){
         FBRequest *request=[[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:@"me/friends"];
         [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {

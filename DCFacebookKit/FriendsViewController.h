@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface FriendsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbFriends;
 
 @end

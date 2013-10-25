@@ -16,4 +16,7 @@
     #import <FacebookSDK/FacebookSDK.h>
     #import "Macro.h"
     #import "DCFbKit.h"
+    #import <sys/socket.h>
+    #import <netinet/in.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
 #endif

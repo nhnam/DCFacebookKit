@@ -10,6 +10,9 @@
 		D815677A180E469300B6A82D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89B3BBF180D3397006E60D7 /* Main.storyboard */; };
 		D82F345818192278004CDF7B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F345718192278004CDF7B /* FriendsViewController.m */; };
 		D82F345918192278004CDF7B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F345718192278004CDF7B /* FriendsViewController.m */; };
+		D83FA21718196A83004EE5EE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D83FA21618196A83004EE5EE /* SystemConfiguration.framework */; };
+		D83FA21A18196AB7004EE5EE /* AppStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D83FA21918196AB7004EE5EE /* AppStatus.m */; };
+		D83FA21B18196AB7004EE5EE /* AppStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D83FA21918196AB7004EE5EE /* AppStatus.m */; };
 		D89B3BAE180D3397006E60D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D89B3BAD180D3397006E60D7 /* Foundation.framework */; };
 		D89B3BB0180D3397006E60D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D89B3BAF180D3397006E60D7 /* CoreGraphics.framework */; };
 		D89B3BB2180D3397006E60D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D89B3BB1180D3397006E60D7 /* UIKit.framework */; };
@@ -50,6 +53,9 @@
 		D815677B180E46A200B6A82D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D82F345618192278004CDF7B /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		D82F345718192278004CDF7B /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		D83FA21618196A83004EE5EE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D83FA21818196AB7004EE5EE /* AppStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStatus.h; sourceTree = "<group>"; };
+		D83FA21918196AB7004EE5EE /* AppStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStatus.m; sourceTree = "<group>"; };
 		D89B3BAA180D3397006E60D7 /* DCFacebookKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCFacebookKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89B3BAD180D3397006E60D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D89B3BAF180D3397006E60D7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D83FA21718196A83004EE5EE /* SystemConfiguration.framework in Frameworks */,
 				D89B3BE5180D3502006E60D7 /* FacebookSDK.framework in Frameworks */,
 				D89B3BF9180D4298006E60D7 /* Social.framework in Frameworks */,
 				D89B3BF7180D427A006E60D7 /* AVFoundation.framework in Frameworks */,
@@ -130,6 +137,7 @@
 		D89B3BAC180D3397006E60D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D83FA21618196A83004EE5EE /* SystemConfiguration.framework */,
 				D89B3BF8180D4298006E60D7 /* Social.framework */,
 				D89B3BF6180D427A006E60D7 /* AVFoundation.framework */,
 				D89B3BAD180D3397006E60D7 /* Foundation.framework */,
@@ -154,6 +162,8 @@
 				D89B3BE2180D3502006E60D7 /* Classes */,
 				D89B3BE3180D3502006E60D7 /* FacebookSDK */,
 				D89B3BB4180D3397006E60D7 /* Supporting Files */,
+				D83FA21818196AB7004EE5EE /* AppStatus.h */,
+				D83FA21918196AB7004EE5EE /* AppStatus.m */,
 			);
 			path = DCFacebookKit;
 			sourceTree = "<group>";
@@ -318,6 +328,7 @@
 				D89B3BC4180D3397006E60D7 /* ViewController.m in Sources */,
 				D89B3BFE180D4589006E60D7 /* MBProgressHUD.m in Sources */,
 				D82F345818192278004CDF7B /* FriendsViewController.m in Sources */,
+				D83FA21A18196AB7004EE5EE /* AppStatus.m in Sources */,
 				D89B3BF2180D3C46006E60D7 /* UIAlertView+Utilities.m in Sources */,
 				D89B3BBE180D3397006E60D7 /* AppDelegate.m in Sources */,
 				D89B3BBA180D3397006E60D7 /* main.m in Sources */,
@@ -332,6 +343,7 @@
 				D82F345918192278004CDF7B /* FriendsViewController.m in Sources */,
 				D89B3BD9180D3398006E60D7 /* DCFacebookKitTests.m in Sources */,
 				D89B3BF3180D3C46006E60D7 /* UIAlertView+Utilities.m in Sources */,
+				D83FA21B18196AB7004EE5EE /* AppStatus.m in Sources */,
 				D89B3BEA180D352B006E60D7 /* DCFbKit.m in Sources */,
 				D89B3BFF180D4589006E60D7 /* MBProgressHUD.m in Sources */,
 			);
