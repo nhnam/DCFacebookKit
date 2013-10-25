@@ -183,7 +183,7 @@
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
                     handler:(void (^)(BOOL, NSObject *))handler
 {
-    DLog(@"Session changed with \nerror %@\nsession: %@", [error localizedDescription]?[error localizedDescription]:@"N/A", session);
+    DLog(@"Session changed.\nERROR %@\nSESSION %@", [error localizedDescription]?[error localizedDescription]:@"N/A", session);
     switch (state) {
         case FBSessionStateOpen:
             if (!error) {
